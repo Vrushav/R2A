@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>R2A</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/landing.css">
+
+</head>
+
+<body>
+
+    <header class="top-header">
+        <div class="header-row">
+            <div class="brand">
+                <div class="brand-mark">🇮🇳</div>
+
+                <div style="text-align:right; margin-bottom:15px;">
+
+<select id="languageSelect" onchange="changeLanguage()">
+
+<option value="en">🇬🇧 English</option>
+
+<option value="hi">🇮🇳 हिन्दी</option>
+
+<option value="gu">🇮🇳 ગુજરાતી</option>
+
+</select>
+
+</div>
+                <div>
+                   <h1 id="appTitle">🏥 R2A</h1>
+
+<p class="tagline" id="appSubtitle">
+Rural Reach Appointment Access
+</p>
+                </div>
+            </div>
+            <span class="gov-badge">Government Approved</span>
+        </div>
+        <p class="top-note">Government of India · Digital Rural Healthcare Prototype</p>
+    </header>
+
+    <div id="homePage" class="container">
+
+        <section class="home-hero">
+            <p class="eyebrow">Rural Healthcare Access</p>
+            <div class="hero-header">
+                <h2 id="heroTitle">
+
+Book government hospital appointments easily
+
+</h2>
+                <span class="hero-badge">Secure rural care platform</span>
+            </div>
+            <p id="heroDescription">
+
+Patient, doctor, hospital, and ASHA portals...
+
+</p>
+        </section>
+
+        <section class="project-highlights">
+            <div class="feature-grid">
+                <div class="highlight-card">
+                    <div class="highlight-icon">✅</div>
+                    <h3>End-to-end care flow</h3>
+                    <p>From patient registration to appointment booking, queue management, and doctor review—every step is connected.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🌾</div>
+                    <h3>Rural-first access</h3>
+                    <p>Designed for rural villages and ASHA workers with offline booking support and simple village navigation.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🔒</div>
+                    <h3>Government-backed trust</h3>
+                    <p>Built as a digital rural healthcare prototype with government approval and reliable public hospital workflows.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <h3>How it works</h3>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Register Patient</h4>
+                    <p>Enter basic patient details, choose gender, and continue to village selection.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Select Village & Hospital</h4>
+                    <p>Pick the nearest village, then choose from recommended government hospitals.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Choose Department & Doctor</h4>
+                    <p>Find the right department, view available doctors, and select a convenient slot.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>Confirm & Print</h4>
+                    <p>Finish booking, get a confirmation slip, and optionally print the appointment details.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="portal-grid">
+
+            <div class="card">
+
+<div class="icon">🤖</div>
+
+<h2>AI Health Assistant</h2>
+
+<p>Find the correct department before booking.</p>
+
+<button onclick="showAIPage()">
+START
+</button>
+
+</div>
+
+<button onclick="showEmergencyPage()"
+style="background:#d32f2f;">
+🚨 Emergency
+</button>
+
+<br><br>
+
+            <div class="portal-card">
+
+                <h3>👤 Patient Portal</h3>
+
+                <p>Book Government Hospital Appointment</p>
+
+                <button onclick="showRegistration()">Open</button>
+
+            </div>
+
+<div class="portal-card">
+
+<h3>🏥 Hospital Dashboard</h3>
+
+<p>Manage Today's Queue</p>
+
+<button onclick="showDashboard()">
+
+Open
+
+</button>
+
+</div>
+
+<div class="portal-card">
+
+<h3>👨‍⚕️ Doctor Dashboard</h3>
+
+<p>View Assigned Patients</p>
+
+<button onclick="showDoctorDashboard()">
+
+Open
+
+</button>
+
+</div>
+
+<div class="portal-card">
+
+<h3>🌾 ASHA Worker Portal</h3>
+
+<p>Village Registration & Offline Booking</p>
+
+<button onclick="showAshaPortal()">
+
+Open
+
+</button>
+
+</div>
+
+<div class="portal-card">
+
+<h3>🏕 Health Camps</h3>
+
+<p>Register for Free Government Health Camps</p>
+
+<button onclick="showHealthCamp()">
+
+Open
+
+</button>
+
+</div>
+
+        </div>
+
+    </div>
+
+    <div id="aiPage" class="container" style="display:none;">
+
+<h2>🤖 AI Health Assistant</h2>
+
+<p>Select your symptoms</p>
+
+<label class="symptom-card">
+
+<input type="checkbox" value="Fever">
+
+🤒 Fever
+
+</label>
+
+<label class="symptom-card">
+
+<input type="checkbox" value="Cold">
+
+🤧 Cold / Cough
+
+</label>
+
+<label class="symptom-card">
+
+<input type="checkbox" value="Headache">
+
+🤕 Headache
+
+</label>
+
+<label class="symptom-card">
+
+<input type="checkbox" value="Tooth Pain">
+
+🦷 Tooth Pain
+
+</label>
+
+<label class="symptom-card">
+
+<input type="checkbox" value="Eye Problem">
+
+👁 Eye Problem
+
+</label>
+
+<label class="symptom-card">
+
+<input type="checkbox" value="Pregnancy">
+
+🤰 Pregnancy
+
+</label>
+
+<label class="symptom-card">
+
+<input type="checkbox" value="Child Health">
+
+👶 Child Health
+
+</label>
+
+<label class="symptom-card">
+
+<input type="checkbox" value="Bone Pain">
+
+🦴 Bone Pain
+
+</label>
+
+<label class="symptom-card">
+
+<input type="checkbox" value="Chest Pain">
+
+❤️ Chest Pain
+
+</label>
+
+<br>
+
+<button onclick="startVoiceBooking()">
+
+🎤 Speak Symptoms
+
+</button>
+
+<br><br>
+
+<button onclick="aiRecommendation()">
+
+Get Recommendation
+
+</button>
+
+</div>
+
+<!-- AI Recommendation Page -->
+
+<div id="aiResultPage" class="container" style="display:none;">
+
+<h2>🤖 AI Recommendation</h2>
+
+<div class="hospital-card">
+
+<h3 id="aiDepartment"></h3>
+
+<p id="aiHospital"></p>
+
+<p id="aiDoctor"></p>
+
+<p id="aiPriority"></p>
+
+<p id="aiReason"></p>
+
+</div>
+
+<br>
+
+<button onclick="continueAIBooking()">
+Continue Booking
+</button>
+
+</div>
+
+<!-- Emergency Page -->
+
+<div id="emergencyPage"
+class="container"
+style="display:none;">
+
+<h2 style="color:red;">
+🚨 Emergency Assistance
+</h2>
+
+<p>
+
+If you have any of the following symptoms,
+
+please seek emergency care immediately.
+
+</p>
+
+<div class="hospital-card">
+
+<h3>🏥 District Hospital</h3>
+
+<p><b>Emergency Department</b></p>
+
+<p>Distance : 7 km</p>
+
+<p>Available : 24 × 7</p>
+
+<p>Ambulance : 108</p>
+
+</div>
+
+<br>
+
+<button onclick="callAmbulance()">
+
+📞 Call Ambulance
+
+</button>
+
+<br><br>
+
+<button onclick="backHome()">
+
+🏠 Back
+
+</button>
+
+</div>
+
+<div id="registrationPage" class="container" style="display:none;">
+
+<h2>Patient Registration</h2>
+
+<input type="text" id="name" placeholder="Patient Name">
+
+<input type="number" id="age" placeholder="Age">
+
+<select id="gender">
+
+<option>Select Gender</option>
+
+<option>Male</option>
+
+<option>Female</option>
+
+<option>Other</option>
+
+</select>
+
+<input type="tel" id="mobile" placeholder="Mobile Number">
+<input type="text"
+id="abha"
+placeholder="ABHA Health ID (Optional)">
+
+<button onclick="registerPatient()">
+Continue
+</button>
+
+</div>
+
+<!-- Family Members -->
+
+<div id="familyPage" class="container" style="display:none;">
+
+<h2>👨‍👩‍👧 Family Health Card</h2>
+
+<p>Select who needs the appointment</p>
+
+<div id="familyList"></div>
+
+<br>
+
+<button onclick="continueFamily()">
+
+Continue
+
+</button>
+
+</div>
+
+<div id="villagePage" class="container" style="display:none;">
+
+<h2>Select Your Village</h2>
+
+<p>Please choose your village</p>
+
+<div class="village-buttons">
+
+<button id="A" class="village-btn" onclick="chooseVillage('Village A','A')">
+🏡 Village A
+</button>
+
+<button id="B" class="village-btn" onclick="chooseVillage('Village B','B')">
+🏡 Village B
+</button>
+
+<button id="C" class="village-btn" onclick="chooseVillage('Village C','C')">
+🏡 Village C
+</button>
+
+</div>
+
+<br>
+
+<button onclick="selectVillage()">
+Continue
+</button>
+
+</div>
+
+<div id="hospitalPage" class="container" style="display:none;">
+
+<div class="progress">
+
+<div class="progress-fill"></div>
+
+</div>
+
+<h2>🏥 Government Hospitals Near You</h2>
+
+<p>Select the hospital where you want to book an appointment.</p>
+
+<div class="hospital-card" onclick="chooseHospital('Primary Health Centre', this)">
+
+<h3>🏥 Primary Health Centre (PHC)</h3>
+
+<p>📍 <strong>Distance:</strong> 5 km</p>
+
+<p>👨‍⚕️ <strong>Doctors:</strong> 3 Available</p>
+
+<p>🟢 <strong>Status:</strong> Available Today</p>
+
+<p>⭐ <strong>Rating:</strong> 4.8 / 5</p>
+
+</div>
+
+<div class="hospital-card"
+onclick="chooseHospital('Community Health Centre', this)">
+
+<h3>🏥 Community Health Centre (CHC)</h3>
+
+<p>📍 <strong>Distance:</strong> 12 km</p>
+
+<p>👨‍⚕️ <strong>Doctors:</strong> 6 Available</p>
+
+<p>🟡 <strong>Status:</strong> Limited Slots</p>
+
+<p>⭐ <strong>Rating:</strong> 4.6 / 5</p>
+
+</div>
+
+<div class="hospital-card" onclick="chooseHospital('District Hospital', this)">
+
+<h3>🏥 District Hospital</h3>
+
+<p>📍 <strong>Distance:</strong> 25 km</p>
+
+<p>👨‍⚕️ <strong>Doctors:</strong> 18 Available</p>
+
+<p>🟢 <strong>Status:</strong> Available</p>
+
+<p>⭐ <strong>Rating:</strong> 4.9 / 5</p>
+
+</div>
+
+<button onclick="continueHospital()">
+Continue
+</button>
+
+</div>
+
+<!-- Medicine Availability -->
+
+<div id="medicinePage" class="container" style="display:none;">
+
+<div class="progress">
+<div class="progress-fill" style="width:60%;"></div>
+</div>
+
+<h2>💊 Medicine Availability</h2>
+
+<p>Available medicines in the selected hospital</p>
+
+<div id="medicineList"></div>
+
+<br>
+
+<button onclick="continueMedicine()">
+
+Continue
+
+</button>
+
+</div>
+
+<div id="departmentPage" class="container" style="display:none;">
+
+<div class="progress">
+
+<div class="progress-fill" style="width:70%;"></div>
+
+</div>
+
+<h2>🩺 Select Department</h2>
+
+<p id="patientGreeting"></p>
+
+<p>Select the department you need.</p>
+
+<div class="department-card"
+onclick="chooseDepartment('General Medicine', this)">
+
+🩺 General Medicine
+
+</div>
+
+<div class="department-card" onclick="chooseDepartment('Women\'s Health', this)">
+
+👩 Women's Health
+
+</div>
+
+<div class="department-card" onclick="chooseDepartment('Child Care', this)">
+
+👶 Child Care
+
+</div>
+
+<div class="department-card" onclick="chooseDepartment('Dental', this)">
+
+🦷 Dental
+
+</div>
+
+<div class="department-card" onclick="chooseDepartment('Eye Care', this)">
+
+👁 Eye Care
+
+</div>
+
+<button onclick="continueDepartment()">
+
+Continue
+
+</button>
+
+</div>
+
+<div id="doctorPage" class="container" style="display:none;">
+
+<div class="progress">
+
+<div class="progress-fill" style="width:85%;"></div>
+
+</div>
+
+<h2>👨‍⚕️ Select Doctor</h2>
+
+<p id="doctorHeading"></p>
+
+<div id="doctorList"></div>
+
+<button onclick="continueDoctor()">
+
+Continue
+
+</button>
+
+</div>
+
+<div id="slotPage" class="container" style="display:none;">
+
+<div class="progress">
+<div class="progress-fill" style="width:95%;"></div>
+</div>
+
+<h2>🕒 Select Time Slot</h2>
+
+<p id="doctorSelected"></p>
+
+<div class="slot-card" onclick="chooseSlot('09:00 AM',this)">09:00 AM</div>
+
+<div class="slot-card" onclick="chooseSlot('10:00 AM',this)">10:00 AM</div>
+
+<div class="slot-card" onclick="chooseSlot('11:00 AM',this)">11:00 AM</div>
+
+<div class="slot-card" onclick="chooseSlot('12:00 PM',this)">12:00 PM</div>
+
+<button onclick="continueSlot()">
+Book Appointment
+</button>
+
+</div>
+
+<div id="confirmationPage" class="container" style="display:none;">
+
+    <div class="progress">
+        <div class="progress-fill" style="width:100%;"></div>
+    </div>
+
+    <h2>✅ Appointment Confirmed</h2>
+
+    <div id="appointmentSlip"></div>
+
+    <button onclick="window.print()">
+        🖨 Print Appointment
+    </button>
+
+    <br><br>
+
+    <button onclick="showHistory()">
+        📜 Appointment History
+    </button>
+
+    <br><br>
+
+    <button onclick="showFeedback()">
+        ⭐ Give Feedback
+    </button>
+
+    <br><br>
+
+    <button onclick="restartBooking()">
+        Book Another Appointment
+    </button>
+
+</div>
+
+<!-- History Page Starts Here -->
+
+<div id="historyPage" class="container" style="display:none;">
+
+    <h2>📜 Appointment History</h2>
+
+    <div id="historyList"></div>
+
+    <br>
+
+    <button onclick="goHome()">
+        🏠 Home
+    </button>
+
+</div>
+
+<!-- Feedback Page -->
+
+<div id="feedbackPage" class="container" style="display:none;">
+
+<h2>⭐ Feedback</h2>
+
+<p>How was your hospital experience?</p>
+
+<label>Doctor Rating</label>
+
+<select id="doctorRating">
+
+<option>5 ⭐</option>
+<option>4 ⭐</option>
+<option>3 ⭐</option>
+<option>2 ⭐</option>
+<option>1 ⭐</option>
+
+</select>
+
+<label>Hospital Rating</label>
+
+<select id="hospitalRating">
+
+<option>5 ⭐</option>
+<option>4 ⭐</option>
+<option>3 ⭐</option>
+<option>2 ⭐</option>
+<option>1 ⭐</option>
+
+</select>
+
+<label>Waiting Time</label>
+
+<select id="waitingRating">
+
+<option>Excellent</option>
+<option>Good</option>
+<option>Average</option>
+<option>Poor</option>
+
+</select>
+
+<textarea id="feedbackComment"
+placeholder="Additional Comments..."
+style="width:100%;height:90px;margin-top:10px;"></textarea>
+
+<br><br>
+
+<button onclick="submitFeedback()">
+
+Submit Feedback
+
+</button>
+
+</div>
+
+<div id="dashboardPage" class="container" style="display:none;">
+
+<h2>🏥 Hospital Dashboard</h2>
+
+<div class="dashboard-card">
+
+<h3>Today's Patients</h3>
+
+<h1 id="totalPatients">0</h1>
+
+</div>
+
+<div class="dashboard-card">
+
+<h3>Current Token</h3>
+
+<h1 id="currentToken">-</h1>
+
+</div>
+
+<button onclick="nextPatient()">
+
+➡ Next Patient
+
+</button>
+
+<br><br>
+
+<div class="dashboard-card">
+
+<h3>Next Token</h3>
+
+<h1 id="nextToken">-</h1>
+
+</div>
+
+<div class="dashboard-card">
+
+<h3>Appointments</h3>
+
+<h1 id="appointmentCount">0</h1>
+
+</div>
+
+<div class="dashboard-card">
+
+<h3>⏳ Estimated Waiting Time</h3>
+
+<h1 id="waitingTime">0 Min</h1>
+
+<p id="patientsAhead">
+
+Patients Ahead : 0
+
+</p>
+
+</div>
+
+<button onclick="goHome()">
+
+🏠 Back
+
+</button>
+
+</div>
+
+<div id="ashaPage" class="container" style="display:none;">
+
+<h2>🌾 ASHA Worker Portal</h2>
+
+<p>Select your village.</p>
+
+<button onclick="ashaVillage('Village A')">
+Village A
+</button>
+
+<br><br>
+
+<button onclick="ashaVillage('Village B')">
+Village B
+</button>
+
+<br><br>
+
+<button onclick="ashaVillage('Village C')">
+Village C
+</button>
+
+<br><br>
+
+<button onclick="saveOfflineBooking()">
+ 🕒 Save Offline Appointment
+</button>
+
+<br><br>
+
+<button onclick="syncAppointments()">
+🔄 Sync Appointments
+</button>
+
+<br><br>
+
+<button onclick="showDoctorDashboard()">
+👨‍⚕️ Doctor Dashboard
+</button>
+
+<br><br>
+
+<button onclick="goHome()">
+
+🏠 Back
+
+</button>
+
+</div>
+
+<div id="doctorDashboard" class="container" style="display:none;">
+
+<h2>👨‍⚕️ Doctor Dashboard</h2>
+
+<h3>Today's Patients</h3>
+
+<div id="doctorPatients"></div>
+
+<br>
+
+<button onclick="goHome()">
+
+🏠 Back
+
+</button>
+
+</div>
+
+<!-- Health Camp Portal -->
+
+<div id="healthCampPage" class="container" style="display:none;">
+
+<h2>🏕 Government Health Camps</h2>
+
+<div id="campList"></div>
+
+<br>
+
+<button onclick="goHome()">
+
+🏠 Back
+
+</button>
+
+</div>
+
+<script src="../../assets/js/landing.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<footer class="page-footer">
+    <p>Contact: support@r2a.gov.in · Helpdesk: 1800-123-456</p>
+    <p>© 2026 Government of India. All rights reserved.</p>
+</footer>
+
+<!-- Appointment Reminder -->
+
+<div id="reminderPopup" class="popup" style="display:none;">
+
+<div class="popup-box">
+
+<h2>🔔 Appointment Reminder</h2>
+
+<p id="reminderText"></p>
+
+<button onclick="closeReminder()">
+
+Remind Later
+
+</button>
+
+<br><br>
+
+<button onclick="dismissReminder()">
+
+Dismiss
+
+</button>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
