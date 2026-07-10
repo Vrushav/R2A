@@ -288,7 +288,7 @@ text-align:left;
 
 .highlight-icon{
 
-font-size:1.4rem;
+font-size:1.8rem;
 
 margin-bottom:12px;
 
@@ -1174,4 +1174,8 @@ margin-bottom:12px;
 #homePage{
     max-width:1100px;
     width:90%;
+}
+
+.project-highlights{
+    margin-top: 40px;
 }
