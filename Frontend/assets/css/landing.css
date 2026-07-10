@@ -515,13 +515,25 @@ line-height:1.7;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+grid-template-columns:repeat(12, minmax(0,1fr));
 
 gap:18px;
 
 align-items:stretch;
 
 margin-top:10px;
+
+}
+
+.portal-card.user-portal{
+
+grid-column:span 4;
+
+}
+
+.portal-card.admin-portal{
+
+grid-column:span 3;
 
 }
 
@@ -1487,11 +1499,41 @@ grid-template-columns:1fr;
 
 }
 
+.portal-card.user-portal,
+.portal-card.admin-portal{
+
+grid-column:auto;
+
+}
+
 .portal-card,
 .card,
 .portal-grid > button[onclick="showEmergencyPage()"]{
 
 min-height:220px;
+
+}
+
+}
+
+@media (min-width: 641px) and (max-width: 980px){
+
+.portal-grid{
+
+grid-template-columns:repeat(6, minmax(0,1fr));
+
+}
+
+.portal-card.user-portal,
+.portal-card.admin-portal{
+
+grid-column:span 3;
+
+}
+
+.portal-card.patient-portal{
+
+grid-column:2 / span 4;
 
 }
 
