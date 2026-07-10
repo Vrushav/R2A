@@ -196,6 +196,36 @@ margin-bottom:24px;
 
 }
 
+.hero-actions{
+
+    display:flex;
+
+    gap:16px;
+
+    margin-top:24px;
+
+    flex-wrap:wrap;
+
+}
+
+.secondary-btn{
+
+    background:#ffffff;
+
+    color:var(--primary);
+
+    border:2px solid var(--primary);
+
+}
+
+.secondary-btn:hover{
+
+    background:var(--primary);
+
+    color:#ffffff;
+
+}
+
 .hero-header{
 
 display:flex;
