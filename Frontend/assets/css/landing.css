@@ -1538,3 +1538,91 @@ grid-column:2 / span 4;
 }
 
 }
+
+/* ===========================
+   Family Health Card
+=========================== */
+
+.progress-label{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    background:var(--secondary-light);
+
+    color:var(--secondary);
+
+    font-weight:600;
+
+    margin-bottom:18px;
+
+}
+
+.page-description{
+
+    color:var(--text-secondary);
+
+    margin-bottom:28px;
+
+}
+
+.member-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    transition:var(--transition);
+
+}
+
+.member-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.member-info h3{
+
+    margin:0;
+
+}
+
+.member-tag{
+
+    display:inline-block;
+
+    margin-top:4px;
+
+    font-size:.85rem;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+.selected{
+
+    border:2px solid var(--primary);
+
+    background:#EEF6FF;
+
+}
+
+.selected-icon{
+
+    color:var(--primary);
+
+    font-size:22px;
+
+}
