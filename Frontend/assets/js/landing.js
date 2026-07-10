@@ -1438,7 +1438,7 @@ function changeLanguage(){
     if(heroTitle) heroTitle.textContent = t.heroTitle;
 
     // portal cards
-    const portalCards = document.querySelectorAll('.portal-grid .portal-card');
+    const portalCards = document.querySelectorAll('.portal-grid .portal-card:not(.featured-card):not(.emergency-card)');
     portalCards.forEach(function(card, idx){
         const h3 = card.querySelector('h3');
         const p = card.querySelector('p');

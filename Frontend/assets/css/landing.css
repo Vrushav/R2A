@@ -46,15 +46,27 @@ padding:0;
 
 color:#1A1A1A;
 
+min-height:100vh;
+
+box-sizing:border-box;
+
+}
+
+*,
+*::before,
+*::after{
+
+box-sizing:inherit;
+
 }
 
 .top-header{
 
-max-width:1100px;
+max-width:1120px;
 
 margin:0 auto;
 
-padding:22px 20px;
+padding:22px 24px;
 
 display:flex;
 
@@ -112,6 +124,28 @@ align-items:center;
 
 gap:16px;
 
+flex-wrap:wrap;
+
+}
+
+.brand div[style*="text-align"]{
+
+order:3;
+
+width:100%;
+
+margin:0 !important;
+
+text-align:left !important;
+
+}
+
+.brand select{
+
+max-width:190px;
+
+margin:0;
+
 }
 
 .brand-mark{
@@ -154,7 +188,9 @@ opacity:0.88;
 
 .page-footer{
 
-max-width:1100px;
+max-width:1120px;
+
+width:min(calc(100% - 32px), 1120px);
 
 margin:40px auto 0;
 
@@ -354,7 +390,7 @@ gap:16px;
 
 .step-card{
 
-padding:18px;
+padding:24px;
 
 margin-top:15px;
 
@@ -368,11 +404,17 @@ transition:0.3s;
 
 font-size:18px;
 
+height:100%;
+
 }
 
 .step-card:hover{
 
-background:#E3F2FD;
+    background:#E3F2FD;
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow-md);
 
 }
 
@@ -473,9 +515,37 @@ line-height:1.7;
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 
 gap:18px;
+
+align-items:stretch;
+
+margin-top:10px;
+
+}
+
+.portal-section{
+
+margin-top:28px;
+
+text-align:left;
+
+}
+
+.section-heading{
+
+margin-bottom:16px;
+
+}
+
+.section-heading h3{
+
+margin:8px 0 0;
+
+font-size:1.35rem;
+
+color:#1565C0;
 
 }
 
@@ -1112,16 +1182,23 @@ color:#555;
    Professional Portal Cards
 =========================== */
 
+.portal-grid > br{
+
+display:none;
+
+}
+
 .portal-card,
-.card{
+.card,
+.portal-grid > button[onclick="showEmergencyPage()"]{
 
 background:#ffffff;
 
-border-radius:18px;
+border-radius:14px;
 
 padding:22px;
 
-margin-top:18px;
+margin-top:0;
 
 box-shadow:0 8px 24px rgba(0,0,0,0.08);
 
@@ -1131,16 +1208,189 @@ transition:all .3s ease;
 
 text-align:center;
 
+display:flex;
+
+flex-direction:column;
+
+justify-content:flex-start;
+
+min-height:245px;
+
+height:100%;
+
+box-sizing:border-box;
+
+}
+
+.portal-grid > button[onclick="showEmergencyPage()"]{
+
+align-items:center;
+
+justify-content:flex-start;
+
+gap:12px;
+
+white-space:pre-line;
+
+line-height:1.55;
+
+font-size:0;
+
+color:#7f1d1d;
+
+background:#fff5f5 !important;
+
+border-color:#fecaca;
+
+box-shadow:0 8px 24px rgba(127,29,29,0.08);
+
+}
+
+.portal-grid > button[onclick="showEmergencyPage()"]::before{
+
+content:"SOS";
+
+width:54px;
+
+height:54px;
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+margin-bottom:2px;
+
+border-radius:14px;
+
+background:#fee2e2;
+
+color:#b91c1c;
+
+font-size:24px;
+
+font-weight:800;
+
+}
+
+.portal-grid > button[onclick="showEmergencyPage()"]::after{
+
+content:"Emergency Help\A Quickly access emergency hospitals and ambulance support.\A\A Emergency Services";
+
+font-size:1rem;
+
+white-space:pre-line;
+
+}
+
+.portal-card button{
+    margin-top:auto;
+    align-self:center;
+}
+
+.emergency-card{
+
+cursor:pointer;
+
+align-items:center;
+
+justify-content:flex-start;
+
+gap:12px;
+
+font-size:0;
+
+line-height:1.55;
+
+color:#7f1d1d;
+
+background:#fff5f5;
+
+border-color:#fecaca;
+
+box-shadow:0 8px 24px rgba(127,29,29,0.08);
+
+}
+
+.emergency-card::before{
+
+content:"SOS";
+
+width:54px;
+
+height:54px;
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+margin-bottom:2px;
+
+border-radius:14px;
+
+background:#fee2e2;
+
+color:#b91c1c;
+
+font-size:24px;
+
+font-weight:800;
+
+}
+
+.emergency-card::after{
+
+content:"Emergency Help\A Quickly access emergency hospitals and ambulance support.\A\A Emergency Services";
+
+font-size:1rem;
+
+white-space:pre-line;
+
+}
+
+.portal-card > button,
+.card > button{
+
+width:100%;
+
+max-width:220px;
+
 }
 
 .portal-card:hover,
-.card:hover{
+.card:hover,
+.portal-grid > button[onclick="showEmergencyPage()"]:hover{
 
 transform:translateY(-6px);
 
 box-shadow:0 15px 35px rgba(21,101,192,.18);
 
 border-color:#1565C0;
+
+}
+
+.emergency-card:hover{
+
+background:#fff1f1;
+
+border-color:#d32f2f;
+
+box-shadow:0 15px 35px rgba(211,47,47,.22);
+
+}
+
+.portal-grid > button[onclick="showEmergencyPage()"]:hover{
+
+background:#d32f2f !important;
+
+color:#ffffff;
+
+border-color:#d32f2f;
+
+box-shadow:0 15px 35px rgba(211,47,47,.22);
 
 }
 
@@ -1166,17 +1416,83 @@ margin-bottom:18px;
 
 .icon{
 
-font-size:50px;
+width:54px;
+
+height:54px;
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+align-self:center;
+
+font-size:28px;
 
 margin-bottom:12px;
+
+border-radius:14px;
+
+background:#E8F5E9;
+
+color:#1565C0;
+
+font-weight:700;
 
 }
 
 #homePage{
-    max-width:1100px;
-    width:90%;
+    max-width:1120px;
+    width:min(calc(100% - 32px), 1120px);
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    margin:32px auto 0;
+    padding:28px;
+    text-align:left;
 }
 
-.project-highlights{
-    margin-top: 40px;
+#homePage .home-hero,
+#homePage .project-highlights,
+#homePage .how-it-works,
+#homePage .portal-section{
+    margin:0;
+}
+
+#homePage .home-hero{
+    padding:28px;
+}
+
+#homePage .hero-actions{
+    margin:0;
+    justify-content:flex-start;
+}
+
+#homePage .highlight-card,
+#homePage .step-card,
+#homePage .portal-card{
+    height:100%;
+}
+
+#homePage .step-card{
+    margin-top:0;
+}
+
+@media (max-width: 640px){
+
+.portal-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.portal-card,
+.card,
+.portal-grid > button[onclick="showEmergencyPage()"]{
+
+min-height:220px;
+
+}
+
 }

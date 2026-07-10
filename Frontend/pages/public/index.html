@@ -104,48 +104,59 @@ before booking an appointment.</p>
             <h3>How it works</h3>
             <div class="steps-grid">
                 <div class="step-card">
-                    <div class="step-number">1</div>
+                    <div class="step-number">01</div>
                     <h4>👤 Register</h4>
                     <p>Create your patient profile with your basic information to begin using R2A.</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-number">2</div>
+                    <div class="step-number">02</div>
                     <h4>🤖 Get Guidance</h4>
                     <p>Use the AI Assistant or select a department to find the right healthcare service.</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-number">3</div>
+                    <div class="step-number">03</div>
                     <h4>📅 Book Appointment</h4>
                     <p>Choose your village, hospital, doctor and available appointment slot.</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-number">4</div>
+                    <div class="step-number">04</div>
                     <h4>🏥 Receive Care</h4>
                     <p>Visit the hospital with your QR appointment pass and manage your healthcare journey digitally.</p>
                 </div>
             </div>
         </section>
 
+        <section class="portal-section">
+            <div class="section-heading">
+                <p class="eyebrow">Access Portals</p>
+                <h3>Choose a service</h3>
+            </div>
+
         <div class="portal-grid">
 
-            <div class="card">
+            <div class="portal-card featured-card">
 
 <div class="icon">🤖</div>
 
-<h2>AI Health Assistant</h2>
+<h3>AI Health Assistant</h3>
 
 <p>Find the correct department before booking.</p>
 
 <button onclick="showAIPage()">
-START
+Start Assistant
 </button>
 
 </div>
 
-<button onclick="showEmergencyPage()"
-style="background:#d32f2f;">
-🚨 Emergency
-</button>
+<div class="portal-card emergency-card" onclick="showEmergencyPage()" role="button" tabindex="0">
+🚨 Emergency Help
+
+Need immediate medical assistance?
+
+Quickly access emergency hospitals and ambulance support.
+
+[Emergency Services]
+</div>
 
 <br><br>
 
@@ -155,7 +166,7 @@ style="background:#d32f2f;">
 
                 <p>Book Government Hospital Appointment</p>
 
-                <button onclick="showRegistration()">Open</button>
+                <button onclick="showRegistration()">Book Appointment</button>
 
             </div>
 
@@ -167,7 +178,7 @@ style="background:#d32f2f;">
 
 <button onclick="showDashboard()">
 
-Open
+Open Dashboard
 
 </button>
 
@@ -181,7 +192,7 @@ Open
 
 <button onclick="showDoctorDashboard()">
 
-Open
+Open Dashboard
 
 </button>
 
@@ -195,7 +206,7 @@ Open
 
 <button onclick="showAshaPortal()">
 
-Open
+Open Portal
 
 </button>
 
@@ -209,13 +220,15 @@ Open
 
 <button onclick="showHealthCamp()">
 
-Open
+Explore Camps
 
 </button>
 
 </div>
 
         </div>
+
+        </section>
 
     </div>
 
