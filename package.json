@@ -1,0 +1,15 @@
+{
+  "name": "r2a-platform",
+  "version": "1.0.0",
+  "description": "R2A scalable healthcare booking platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test Backend/tests/*.test.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.0"
+  }
+}

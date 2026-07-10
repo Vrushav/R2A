@@ -318,17 +318,31 @@ document.getElementById("registrationPage").style.display="block";
 
 function registerPatient(){
 
-let name=document.getElementById("name").value;
-let age=document.getElementById("age").value;
+let name=document.getElementById("name").value.trim();
+let age=document.getElementById("age").value.trim();
 let gender=document.getElementById("gender").value;
-let mobile=document.getElementById("mobile").value;
-let abha=document.getElementById("abha").value;
+let mobile=document.getElementById("mobile").value.trim();
+let abha=document.getElementById("abha").value.trim();
+
+const ageNumber = Number(age);
+const isValidAge = /^\d{1,3}$/.test(age);
+const isValidMobile = /^\d{10}$/.test(mobile);
 
 if(name=="" || age=="" || gender=="Select Gender" || mobile==""){
 
 alert((translations[currentLang]||translations.en).messages.fillDetails);
 return;
 
+}
+
+if(!isValidAge || ageNumber <= 0 || ageNumber > 120){
+    alert('Please enter a valid age between 1 and 120.');
+    return;
+}
+
+if(!isValidMobile){
+    alert('Please enter a valid 10-digit mobile number.');
+    return;
 }
 
 patient.name=name;
@@ -594,6 +608,11 @@ alert((translations[currentLang]||translations.en).messages.selectTimeSlot);
 
 return;
 
+}
+
+if(!patient.name || !patient.hospital || !patient.department || !patient.doctor){
+    alert('Please complete the booking details before confirming the appointment.');
+    return;
 }
 
 patient.slot=selectedSlot;

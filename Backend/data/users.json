@@ -1,0 +1,16 @@
+[
+  {
+    "id": "user-1783694220408",
+    "name": "Test",
+    "email": "test@example.com",
+    "role": "patient",
+    "password": "abc123"
+  },
+  {
+    "id": "user-1783695007507",
+    "name": "Vrushav Patel",
+    "email": "vrushavpatel1021@gmail.com",
+    "role": "patient",
+    "password": "VPPatel1234"
+  }
+]

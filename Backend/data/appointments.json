@@ -1,0 +1,22 @@
+[
+  {
+    "id": "APT-1783692172622",
+    "name": "Test Patient",
+    "hospital": "District Hospital",
+    "department": "General Medicine",
+    "doctor": "Dr. Amit Patel",
+    "status": "Confirmed",
+    "token": "A101",
+    "createdAt": "2026-07-10T14:02:52.622Z"
+  },
+  {
+    "id": "APT-1783692243101",
+    "name": "Test Patient",
+    "hospital": "District Hospital",
+    "department": "General Medicine",
+    "doctor": "Dr. Amit Patel",
+    "status": "Confirmed",
+    "token": "A101",
+    "createdAt": "2026-07-10T14:04:03.101Z"
+  }
+]

@@ -1,0 +1,52 @@
+:root {
+  --primary: #1565C0;
+  --accent: #2E7D32;
+}
+
+.auth-shell {
+  display: grid;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.auth-card {
+  background: linear-gradient(135deg, #f8fbff 0%, #f4fcf7 100%);
+  border: 1px solid #dcecff;
+  border-radius: 18px;
+  padding: 18px;
+  text-align: left;
+  box-shadow: 0 10px 24px rgba(21,101,192,0.08);
+}
+
+.auth-card h3 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.auth-switch {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.auth-switch button {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: #e8f0fe;
+  color: var(--primary);
+  box-shadow: none;
+  font-size: 0.95rem;
+}
+
+.auth-switch button.active {
+  background: var(--primary);
+  color: white;
+}
+
+.auth-message {
+  font-size: 0.95rem;
+  color: var(--accent);
+  margin-top: 10px;
+  min-height: 1.4em;
+}
