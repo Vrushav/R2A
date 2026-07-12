@@ -3,15 +3,19 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 
+require("dotenv").config();
+
+const connectDB = require("./config/db");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
-const dataDir = process.env.R2A_DATA_DIR || path.join(__dirname, 'Backend', 'data');
+const dataDir = process.env.R2A_DATA_DIR || path.join(__dirname, 'data');
 const appointmentsFile = path.join(dataDir, 'appointments.json');
 const usersFile = path.join(dataDir, 'users.json');
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'Frontend')));
+app.use(express.static(path.join(__dirname, '..', 'Frontend')));
 
 function ensureDataFile(filePath, defaultValue) {
   if (!fs.existsSync(filePath)) {
@@ -127,7 +131,7 @@ app.get('/api/health-camps', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'Frontend', 'pages', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'Frontend', 'public', 'index.html'));
 });
 
 function startServer(port = PORT) {
@@ -137,6 +141,7 @@ function startServer(port = PORT) {
 }
 
 if (require.main === module) {
+  connectDB();
   startServer();
 }
 
