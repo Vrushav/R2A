@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
+const authRoutes = require("./routes/authRoutes");
 
 require("dotenv").config();
 
@@ -13,6 +14,8 @@ const dataDir = process.env.R2A_DATA_DIR || path.join(__dirname, 'data');
 const appointmentsFile = path.join(dataDir, 'appointments.json');
 const usersFile = path.join(dataDir, 'users.json');
 
+app.use(express.json());
+app.use("/api/auth", authRoutes);
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'Frontend')));
@@ -74,6 +77,9 @@ app.put('/api/appointments/:token/complete', (req, res) => {
   res.json(appointment);
 });
 
+/*
+                OLD JSON SIGNUP
+
 app.post('/api/auth/signup', (req, res) => {
   const { name, email, password, role = 'patient' } = req.body;
 
@@ -97,7 +103,7 @@ app.post('/api/auth/signup', (req, res) => {
   users.push(user);
   writeJson(usersFile, users);
   res.status(201).json({ user: { id: user.id, name, email, role }, token: `token-${user.id}` });
-});
+});*/
 
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
@@ -141,8 +147,13 @@ function startServer(port = PORT) {
 }
 
 if (require.main === module) {
-  connectDB();
-  startServer();
+    connectDB()
+        .then(() => {
+            startServer();
+        })
+        .catch((err) => {
+            console.error("Failed to start server:", err);
+        });
 }
 
 module.exports = { app, startServer };
