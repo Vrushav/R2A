@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const cors = require('cors');
 const authRoutes = require("./routes/authRoutes");
+const authenticateUser = require("./middleware/authMiddleware");
 
 require("dotenv").config();
 
@@ -63,6 +64,20 @@ app.get('/api/dashboard-summary', (req, res) => {
     pendingAppointments: totalAppointments - completedAppointments,
     latestAppointment: appointments[appointments.length - 1] || null
   });
+});
+
+app.get("/api/profile", authenticateUser, (req, res) => {
+
+    res.json({
+
+        success: true,
+
+        message: "Protected route accessed successfully.",
+
+        user: req.user
+
+    });
+
 });
 
 app.put('/api/appointments/:token/complete', (req, res) => {
