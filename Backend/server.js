@@ -16,9 +16,6 @@ const PORT = process.env.PORT || 3000;
 const dataDir = process.env.R2A_DATA_DIR || path.join(__dirname, 'data');
 const appointmentsFile = path.join(dataDir, 'appointments.json');
 const usersFile = path.join(dataDir, 'users.json');
-const appointmentRoutes = require("./routes/appointmentRoutes");
-const dashboardRoutes = require("./routes/dashboardRoutes");
-const healthCampRoutes = require("./routes/healthCampRoutes");
 
 app.use((req, res, next) => {
   if (req.path.startsWith('/api/')) {
@@ -36,11 +33,6 @@ app.get('/api/users/hello', (req, res) => {
 });
 console.log("✅ User routes registered");
 app.use(express.static(path.join(__dirname, '..', 'Frontend')));
-app.use("/api/appointments", appointmentRoutes);
-
-app.use("/api/dashboard", dashboardRoutes);
-
-app.use("/api/health-camps", healthCampRoutes);
 
 function ensureDataFile(filePath, defaultValue) {
   if (!fs.existsSync(filePath)) {

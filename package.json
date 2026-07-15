@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node Backend/server.js",
-    "dev": "node --watch Backend/server.js",
+    "dev": "nodemon Backend/server.js",
     "test": "node --test Backend/tests/*.test.js"
   },
   "dependencies": {
@@ -16,5 +16,8 @@
     "express-validator": "^7.3.2",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.7.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
