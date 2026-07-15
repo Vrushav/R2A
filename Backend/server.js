@@ -4,21 +4,34 @@ const path = require('path');
 const cors = require('cors');
 const authRoutes = require("./routes/authRoutes");
 const authenticateUser = require("./middleware/authMiddleware");
+const userRoutes = require("./routes/userRoutes");
 
 require("dotenv").config();
 
 const connectDB = require("./config/db");
 
 const app = express();
+console.log("Backend server file loaded from:", __dirname);
 const PORT = process.env.PORT || 3000;
 const dataDir = process.env.R2A_DATA_DIR || path.join(__dirname, 'data');
 const appointmentsFile = path.join(dataDir, 'appointments.json');
 const usersFile = path.join(dataDir, 'users.json');
 
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/')) {
+    console.log(`➡️ API request ${req.method} ${req.originalUrl}`);
+  }
+  next();
+});
+
 app.use(express.json());
-app.use("/api/auth", authRoutes);
 app.use(cors());
-app.use(express.json());
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.get('/api/users/hello', (req, res) => {
+  res.json({ message: "Hello from user routes fallback" });
+});
+console.log("✅ User routes registered");
 app.use(express.static(path.join(__dirname, '..', 'Frontend')));
 
 function ensureDataFile(filePath, defaultValue) {
@@ -118,7 +131,7 @@ app.post('/api/auth/signup', (req, res) => {
   users.push(user);
   writeJson(usersFile, users);
   res.status(201).json({ user: { id: user.id, name, email, role }, token: `token-${user.id}` });
-});*/
+});
 
 app.post('/api/auth/login', (req, res) => {
   const { email, password } = req.body;
@@ -133,7 +146,7 @@ app.post('/api/auth/login', (req, res) => {
   }
 
   res.json({ user: { id: user.id, name: user.name, email: user.email, role: user.role }, token: `token-${user.id}` });
-});
+});*/
 
 app.post('/api/appointments', (req, res) => {
   const appointment = {
@@ -149,6 +162,10 @@ app.post('/api/appointments', (req, res) => {
 
 app.get('/api/health-camps', (req, res) => {
   res.json(healthCamps);
+});
+
+app.use('/api', (req, res) => {
+  res.status(404).json({ error: 'API route not found' });
 });
 
 app.get('*', (req, res) => {

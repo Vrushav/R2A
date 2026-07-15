@@ -1,18 +1,16 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema({
-
+const userSchema = new mongoose.Schema(
+{
     name: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     },
 
     email: {
         type: String,
         required: true,
-        unique: true,
-        lowercase: true
+        unique: true
     },
 
     password: {
@@ -22,14 +20,13 @@ const userSchema = new mongoose.Schema({
 
     role: {
         type: String,
-        enum: [
-            "patient",
-            "doctor",
-            "hospital",
-            "asha",
-            "admin"
-        ],
+        enum: ["patient", "doctor", "hospital", "admin"],
         default: "patient"
+    },
+
+    profileCompleted: {
+        type: Boolean,
+        default: false
     },
 
     phone: {
@@ -39,13 +36,12 @@ const userSchema = new mongoose.Schema({
 
     gender: {
         type: String,
-        enum: ["Male", "Female", "Other"],
-        default: "Other"
+        enum: ["Male", "Female", "Other", ""],
+        default: ""
     },
 
     age: {
-        type: Number,
-        default: 0
+        type: Number
     },
 
     bloodGroup: {
@@ -63,7 +59,8 @@ const userSchema = new mongoose.Schema({
         default: ""
     }
 
-}, {
+},
+{
     timestamps: true
 });
 
