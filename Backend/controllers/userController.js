@@ -1,5 +1,9 @@
 const User = require("../models/User");
 const userService = require("../services/userService");
+const {
+    successResponse,
+    errorResponse
+} = require("../utils/response");
 
 // CREATE PROFILE
 const createProfile = async (req, res) => {
@@ -10,19 +14,19 @@ const createProfile = async (req, res) => {
             req.body
         );
 
-        res.status(200).json({
-            success: true,
-            message: "Profile created successfully.",
-            data: updatedUser
-        });
-
+        return successResponse(
+            res,
+            200,
+            "Profile created successfully.",
+            updatedUser
+        ); 
     } catch (error) {
 
-        res.status(400).json({
-            success: false,
-            message: error.message
-        });
-
+        return errorResponse(
+            res,
+            400,
+            error.message
+        );
     }
 };
 
@@ -33,20 +37,22 @@ const getProfile = async (req, res) => {
 
         const user = await User.findById(req.user.id).select("-password");
 
-        res.json({
-            success: true,
+        return successResponse(
+            res,
+            200,
+            "Profile fetched successfully.",
             user
-        });
+        );
 
     } catch (err) {
 
         console.error(err);
 
-        res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        });
-
+        return errorResponse(
+            res,
+            500,
+            "Internal Server Error"
+        );
     }
 
 };
@@ -56,26 +62,51 @@ const updateProfile = async (req, res) => {
 
     try {
 
+        const {
+            phone,
+            gender,
+            age,
+            bloodGroup,
+            address,
+            emergencyContact
+        } = req.body;
+
         const updatedUser = await User.findByIdAndUpdate(
+
             req.user.id,
-            req.body,
-            { new: true }
+
+            {
+                phone,
+                gender,
+                age,
+                bloodGroup,
+                address,
+                emergencyContact
+            },
+
+            {
+                new: true,
+                runValidators: true
+            }
+
         ).select("-password");
 
-        res.json({
-            success: true,
-            message: "Profile updated.",
-            user: updatedUser
-        });
+        return successResponse(
+            res,
+            200,
+            "Profile updated successfully.",
+            updatedUser
+        );
 
     } catch (err) {
 
         console.error(err);
 
-        res.status(500).json({
-            success: false,
-            message: "Internal Server Error"
-        });
+        return errorResponse(
+            res,
+            500,
+            "Internal Server Error"
+        );
 
     }
 

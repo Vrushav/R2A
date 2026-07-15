@@ -11,14 +11,19 @@ const {
     updateProfile
 } = require("../controllers/userController");
 
+const {
+    validateProfile,
+    handleValidation
+} = require("../validators/userValidator");
+
 // Create profile
-router.post("/profile", authenticateUser, createProfile);
+router.post("/profile", authenticateUser, validateProfile, handleValidation, createProfile);
 
 // Get logged-in user's profile
 router.get("/me", authenticateUser, getProfile);
 
 // Update profile
-router.put("/me", authenticateUser, updateProfile);
+router.put("/me", authenticateUser,validateProfile, handleValidation, updateProfile);
 
 router.get("/hello", (req, res) => {
     res.json({ message: "Hello from user routes" });
