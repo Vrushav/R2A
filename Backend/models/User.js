@@ -57,6 +57,44 @@ const userSchema = new mongoose.Schema(
     emergencyContact: {
         type: String,
         default: ""
+    },
+
+    specialization: {
+        type: String,
+        default: ""
+    },
+
+    qualification: {
+        type: String,
+        default: ""
+    },
+
+    hospital: {
+        type: String,
+        default: ""
+    },
+
+    experience: {
+        type: Number,
+        default: 0
+    },
+
+    consultationFee: {
+        type: Number,
+    default: 0
+    },
+
+    availableDays: [{
+    type: String
+    }],
+
+    availableTimeSlots: [{
+    type: String
+    }],
+
+    isAvailable: {
+    type: Boolean,
+    default: true
     }
 
 },

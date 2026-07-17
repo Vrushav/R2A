@@ -15,6 +15,15 @@ const PORT = process.env.PORT || 3000;
 const dataDir = process.env.R2A_DATA_DIR || path.join(__dirname, 'data');
 const appointmentsFile = path.join(dataDir, 'appointments.json');
 const usersFile = path.join(dataDir, 'users.json');
+const appointmentRoutes = require("./routes/appointmentRoutes");
+let doctorRoutes;
+try {
+  doctorRoutes = require("./routes/doctorRoutes");
+  console.log("✅ doctorRoutes imported successfully");
+} catch (err) {
+  console.error("❌ Error importing doctorRoutes:", err.message);
+  doctorRoutes = null;
+}
 
 app.use((req, res, next) => {
   if (req.path.startsWith('/api/')) {
@@ -28,6 +37,13 @@ app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use(express.static(path.join(__dirname, '..', 'Frontend')));
+app.use("/api/appointments", appointmentRoutes);
+if (doctorRoutes) {
+  app.use("/api/doctors", doctorRoutes);
+  console.log("✅ Doctor routes mounted at /api/doctors");
+} else {
+  console.warn("⚠️  Doctor routes NOT mounted - module failed to load");
+}
 
 function ensureDataFile(filePath, defaultValue) {
   if (!fs.existsSync(filePath)) {
