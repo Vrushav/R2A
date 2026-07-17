@@ -6,12 +6,11 @@ const authRoutes = require("./routes/authRoutes");
 const authenticateUser = require("./middleware/authMiddleware");
 const userRoutes = require("./routes/userRoutes");
 
-require("dotenv").config();
+require("dotenv").config({ path: path.join(__dirname, '..', '.env') });
 
 const connectDB = require("./config/db");
 
 const app = express();
-console.log("Backend server file loaded from:", __dirname);
 const PORT = process.env.PORT || 3000;
 const dataDir = process.env.R2A_DATA_DIR || path.join(__dirname, 'data');
 const appointmentsFile = path.join(dataDir, 'appointments.json');
@@ -28,10 +27,6 @@ app.use(express.json());
 app.use(cors());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
-app.get('/api/users/hello', (req, res) => {
-  res.json({ message: "Hello from user routes fallback" });
-});
-console.log("✅ User routes registered");
 app.use(express.static(path.join(__dirname, '..', 'Frontend')));
 
 function ensureDataFile(filePath, defaultValue) {
