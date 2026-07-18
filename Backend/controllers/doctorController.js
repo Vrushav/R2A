@@ -5,18 +5,17 @@ const doctorService = require("../services/doctorService");
 const createDoctor = async (req, res) => {
     try {
         const {
-            name,
-            email,
-            password,
-            phone,
-            specialization,
-            qualification,
-            hospital,
-            experience,
-            consultationFee,
-            availableDays,
-            availableTimeSlots
-        } = req.body;
+    name,
+    email,
+    password,
+    phone,
+    specialization,
+    qualification,
+    hospital,
+    experience,
+    consultationFee,
+    availability
+} = req.body;
 
         // Check if doctor already exists
         const existingDoctor = await doctorService.getDoctorByEmail(email);
@@ -41,8 +40,7 @@ const createDoctor = async (req, res) => {
             hospital,
             experience,
             consultationFee,
-            availableDays,
-            availableTimeSlots
+            availability
         });
 
         res.status(201).json({
@@ -140,9 +138,41 @@ const updateDoctor = async (req, res) => {
     }
 };
 
+const updateDoctorAvailability = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { availability } = req.body;
+
+        const doctor = await doctorService.updateDoctorAvailability(
+            id,
+            availability
+        );
+
+        if (!doctor) {
+            return res.status(404).json({
+                success: false,
+                message: "Doctor not found"
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: "Doctor availability updated successfully",
+            data: doctor
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
+
 module.exports = {
     createDoctor,
     getAllDoctors,
     getDoctorById,
-    updateDoctor
+    updateDoctor,
+    updateDoctorAvailability
 };

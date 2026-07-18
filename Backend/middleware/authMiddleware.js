@@ -24,6 +24,8 @@ const authenticateUser = (req, res, next) => {
 
         req.user = decoded;
 
+        console.log("Authenticated User:", req.user);
+        
         next();
 
     } catch (err) {

@@ -11,7 +11,8 @@ const {
     createDoctor,
     getAllDoctors,
     getDoctorById,
-    updateDoctor
+    updateDoctor,
+    updateDoctorAvailability
 } = require("../controllers/doctorController");
 
 const authenticateUser = require("../middleware/authMiddleware");
@@ -45,6 +46,13 @@ router.put(
     authenticateUser,
     authorizeRoles("admin"),
     updateDoctor
+);
+
+router.patch(
+    "/:id/availability",
+    authenticateUser,
+    authorizeRoles("admin"),
+    updateDoctorAvailability
 );
 
 module.exports = router;

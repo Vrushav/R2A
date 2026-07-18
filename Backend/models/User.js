@@ -84,13 +84,40 @@ const userSchema = new mongoose.Schema(
     default: 0
     },
 
-    availableDays: [{
-    type: String
-    }],
+    availability: [
+    {
+        day: {
+            type: String,
+            enum: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ]
+        },
 
-    availableTimeSlots: [{
-    type: String
-    }],
+        isAvailable: {
+            type: Boolean,
+            default: true
+        },
+
+        startTime: {
+            type: String
+        },
+
+        endTime: {
+            type: String
+        },
+
+        consultationDuration: {
+            type: Number,
+            default: 30
+         }
+     }
+    ],
 
     isAvailable: {
     type: Boolean,

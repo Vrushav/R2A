@@ -43,10 +43,27 @@ const updateDoctor = async (doctorId, updatedData) => {
     ).select("-password");
 };
 
+const updateDoctorAvailability = async (doctorId, availability) => {
+    return await User.findOneAndUpdate(
+        {
+            _id: doctorId,
+            role: "doctor"
+        },
+        {
+            availability
+        },
+        {
+            new: true,
+            runValidators: true
+        }
+    );
+};
+
 module.exports = {
     createDoctor,
     getAllDoctors,
     getDoctorById,
     getDoctorByEmail,
     updateDoctor,
+    updateDoctorAvailability
 };
